@@ -3,7 +3,7 @@ Feature: As a user Login page of library
   Background: Open the login page
     Given open the login page
 
-    @Student
+    @Student @Smoke
   Scenario Outline: student user is login
     And enter the user name "<username>"
     And enter the password "<password>"
