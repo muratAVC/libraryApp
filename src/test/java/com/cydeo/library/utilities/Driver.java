@@ -18,14 +18,21 @@ import java.util.concurrent.TimeUnit;
 public class Driver {
     private Driver(){}
 
+    static String browser;
     private static InheritableThreadLocal<WebDriver> driverPool =new InheritableThreadLocal<>();
 
     public static WebDriver getDriver(){
         if (driverPool.get() == null){
-            String browserType = ConfigurationReader.getProperty("browser");
+            if (System.getProperty("BROWSER")==null){
+                browser=ConfigurationReader.getProperty("browser");
+            }else {
+                browser=System.getProperty("BROWSER");
+            }
+
+            //String browserType = ConfigurationReader.getProperty("browser");
             ChromeOptions options=new ChromeOptions();
             options.addArguments("--lang=en");
-            switch (browserType){
+            switch (browser){
                 case "chrome":
 
                     WebDriverManager.chromedriver().setup();
