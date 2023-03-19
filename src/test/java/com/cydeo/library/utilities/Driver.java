@@ -56,7 +56,7 @@ public class Driver {
                         driverPool.set(new RemoteWebDriver(url,desiredCapabilities));
                         driverPool.get().manage().window().maximize();
                         driverPool.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-                    } catch (MalformedURLException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
